@@ -1,4 +1,3 @@
-
 {
   "folders": [
     {
@@ -8,7 +7,11 @@
     {
       "path": "PlatePal",
       "name": "server"
-    },{"path":".github/workflows", "name":"workflows"}
+    },
+    {
+      "path": ".github/workflows",
+      "name": "workflows"
+    }
   ],
   "settings": {
     "editor.suggestSelection": "first",
@@ -40,6 +43,26 @@
     },
     "[vue]": {
       "editor.defaultFormatter": "Vue.volar"
-    }
+    },
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#f9120a",
+      "activityBar.background": "#f9120a",
+      "activityBar.foreground": "#e7e7e7",
+      "activityBar.inactiveForeground": "#e7e7e799",
+      "activityBarBadge.background": "#05da0c",
+      "activityBarBadge.foreground": "#15202b",
+      "commandCenter.border": "#e7e7e799",
+      "sash.hoverBorder": "#f9120a",
+      "statusBar.background": "#cb0c05",
+      "statusBar.foreground": "#e7e7e7",
+      "statusBarItem.hoverBackground": "#f9120a",
+      "statusBarItem.remoteBackground": "#cb0c05",
+      "statusBarItem.remoteForeground": "#e7e7e7",
+      "titleBar.activeBackground": "#cb0c05",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveBackground": "#cb0c0599",
+      "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#cb0c05"
   }
 }
