@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-dark p-3 mb-3">
+  <nav class="bg-dark p-3 mb-3 pb-5">
     <div class="text-end">
       <Login />
     </div>

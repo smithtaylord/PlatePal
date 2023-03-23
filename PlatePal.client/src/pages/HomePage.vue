@@ -1,6 +1,16 @@
 <template>
   <div class="container-fluid">
     <div class="row">
+      <div class="col-md-6 m-auto bg-light box-shadow d-flex justify-content-around text-dark p-3 move-up rounded">
+        <div class="fs-3 selectable">Home</div>
+        <div class="fs-3 selectable">My Recipes</div>
+        <div class="fs-3 selectable">Favorites</div>
+
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
       <div class="col-md-4 d-flex justify-content-center" v-for="recipe in recipes">
         <RecipeCard :recipe="recipe" />
       </div>
@@ -36,4 +46,9 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.move-up {
+  transform: translateY(- 50px);
+
+}
+</style>
