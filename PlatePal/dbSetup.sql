@@ -38,3 +38,21 @@ VALUES (
 SELECT rec.*, acct.*
 FROM recipes rec
     JOIN accounts acct ON rec.creatorId = acct.id;
+
+CREATE TABLE
+    ingredients(
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        quantity VARCHAR(255) NOT NULL,
+        recipeId INT NOT NULL,
+        FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
+    ) default charset utf8 COMMENT '';
+
+INSERT INTO
+    ingredients (name, quantity, recipeId)
+VALUES ('noodles', '7 cups', 11);
+
+SELECT ing.*
+FROM ingredients ing
+    JOIN recipes rec ON rec.id = recipeId
+WHERE recipeId = 26;
