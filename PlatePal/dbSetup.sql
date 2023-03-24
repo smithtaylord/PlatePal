@@ -56,3 +56,5 @@ SELECT ing.*
 FROM ingredients ing
     JOIN recipes rec ON rec.id = recipeId
 WHERE recipeId = 26;
+
+SELECT * FROM ingredients WHERE id = 9;

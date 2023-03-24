@@ -28,15 +28,6 @@ namespace PlatePal.Services
             return recipe;
         }
 
-        internal string DeleteRecipe(int id, string userId)
-        {
-            Recipe recipe = _repo.GetById(id);
-            if (recipe == null) throw new Exception($"No recipe at id:{id}");
-            if (recipe.CreatorId != userId) throw new Exception("You are not allowed to delete this recipe");
-            _repo.DeleteRecipe(id);
-            return $"{recipe.Title} recipe has been removed";
-
-        }
 
         internal Recipe EditRecipe(int recipeId, Recipe recipeData, string userId)
         {
@@ -47,6 +38,15 @@ namespace PlatePal.Services
             if (rowsAffected == 0) throw new Exception("Could not modify for some reason");
             if (rowsAffected > 1) throw new Exception("Something went very very wrong and you edited more than one row.");
             return original;
+        }
+        internal string DeleteRecipe(int id, string userId)
+        {
+            Recipe recipe = _repo.GetById(id);
+            if (recipe == null) throw new Exception($"No recipe at id:{id}");
+            if (recipe.CreatorId != userId) throw new Exception("You are not allowed to delete this recipe");
+            _repo.DeleteRecipe(id);
+            return $"{recipe.Title} recipe has been removed";
+
         }
     }
 }

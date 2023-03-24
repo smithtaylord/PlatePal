@@ -22,6 +22,19 @@ namespace PlatePal.Repositories
             return ingredientData;
         }
 
+
+        internal Ingredient GetIngredientById(int id)
+        {
+            string sql = @"
+            SELECT
+            *
+            FROM ingredients
+            WHERE id = @id
+            ";
+            Ingredient ingredient = _db.Query<Ingredient>(sql, new { id }).FirstOrDefault();
+            return ingredient;
+        }
+
         internal List<Ingredient> GetIngredientsByRecipe(int recipeId)
         {
             string sql = @"
@@ -33,6 +46,14 @@ namespace PlatePal.Repositories
             ";
             List<Ingredient> ingredients = _db.Query<Ingredient>(sql, new { recipeId }).ToList();
             return ingredients;
+        }
+        internal void DeleteIngredient(int id)
+        {
+            string sql = @"
+            DELETE FROM ingredients
+            WHERE id = @id;
+            ";
+            _db.Execute(sql, new { id });
         }
     }
 }
