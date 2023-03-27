@@ -72,7 +72,17 @@ INSERT INTO
     favorites (recipeId, accountId)
 VALUES (6, '641b5f51c659f88d558161f9');
 
-SELECT fav.*, acct.*, rec.*
+SELECT
+    fav.*,
+    acct.id AS accountId,
+    acct.name,
+    acct.picture,
+    rec.id AS recipeId,
+    rec.title,
+    rec.instructions,
+    rec.img,
+    rec.category,
+    rec.creatorId
 FROM favorites fav
     JOIN accounts acct ON fav.accountId = acct.id
     JOIN recipes rec ON fav.recipeId = rec.id
