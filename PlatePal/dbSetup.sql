@@ -58,3 +58,23 @@ FROM ingredients ing
 WHERE recipeId = 26;
 
 SELECT * FROM ingredients WHERE id = 9;
+
+CREATE TABLE
+    favorites(
+        id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        accountId VARCHAR(255) NOT NULL,
+        recipeId INT NOT NULL,
+        FOREIGN KEY (accountId) REFERENCES accounts(id) ON DELETE CASCADE,
+        FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
+    ) default charset utf8 COMMENT '';
+
+INSERT INTO
+    favorites (recipeId, accountId)
+VALUES (6, '641b5f51c659f88d558161f9');
+
+SELECT fav.*, acct.*, rec.*
+FROM favorites fav
+    JOIN accounts acct ON fav.accountId = acct.id
+    JOIN recipes rec ON fav.recipeId = rec.id
+WHERE
+    accountId = '641b5f51c659f88d558161f9';
