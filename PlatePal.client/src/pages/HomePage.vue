@@ -16,6 +16,16 @@
       </div>
     </div>
   </div>
+  <div class="container-fluid sticky-bottom">
+    <div class="row">
+      <div class="col-12">
+        <div class="text-end m-3">
+          <button class="btn btn-success rounded-circle big-btn mdi mdi-plus-circle-outline box-shadow"
+            data-bs-toggle="modal" data-bs-target="#createRecipe"></button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -49,6 +59,14 @@ export default {
 <style scoped lang="scss">
 .move-up {
   transform: translateY(- 50px);
+
+}
+
+.big-btn {
+  height: 10vh;
+  width: 10vh;
+  font-size: 48pt;
+  text-shadow: 1px 1px, 2px rgba(0, 0, 0, 0.5);
 
 }
 </style>
