@@ -6,33 +6,40 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form @submit.prevent="">
-
+                <form @submit.prevent="createRecipe">
                     <div class="row">
                         <div class="col-6">
                             <div class="form-floating mb-3">
-                                <input required type="text" class="form-control" id="name" for="name" placeholder="name..."
-                                    maxlength="100" minlength="2">
-                                <label for="floatingInput">Name</label>
+                                <input required v-model="editable.title" type="text" class="form-control" id="name"
+                                    for="name" placeholder="name..." maxlength="100" minlength="2">
+                                <label for="floatingInput">Title</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-floating mb-3">
-                                <input required type="text" class="form-control" id="cover-image" for="cover-image"
-                                    placeholder="cover image..." maxlength="1000" minlength="2">
+                                <input required v-model="editable.img" type="text" class="form-control" id="cover-image"
+                                    for="cover-image" placeholder="cover image..." maxlength="1000" minlength="2">
                                 <label for="floatingInput">Cover Image</label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="form-floating">
-                                <textarea required class="form-control" placeholder="Leave a comment here"
-                                    id="event-description" for="event-description" style="height: 100px" maxlength="2500"
-                                    minlength="2"></textarea>
-                                <label for="floatingTextarea2">Event Description</label>
+                            <div class="form-floating mb-3">
+                                <textarea required v-model="editable.instructions" class="form-control"
+                                    placeholder="Leave a comment here" id="event-description" for="recipe-instructions"
+                                    style="height: 100px" maxlength="2500" minlength="2"></textarea>
+                                <label for="floatingTextarea2">Recipe Instructions</label>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div class="form-floating mb-3">
+                                <input required v-model="editable.category" type="text" class="form-control"
+                                    id="cover-image" for="category" placeholder="category" maxlength="1000" minlength="2">
+                                <label for="floatingInput">Category</label>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="reset" class="btn bg-secondary selectable" data-bs-dismiss="modal">Close</button>
@@ -46,9 +53,25 @@
 
 
 <script>
+import { ref } from 'vue';
+import { recipesService } from '../services/RecipesService.js';
+import Pop from '../utils/Pop.js';
+
 export default {
     setup() {
-        return {}
+        const editable = ref({})
+        return {
+            editable,
+            async createRecipe() {
+                try {
+                    const formData = editable.value
+                    await recipesService.createRecipe(formData)
+                    editable.value = {}
+                } catch (error) {
+                    Pop.error(error, "[create recipe]")
+                }
+            }
+        }
     }
 }
 </script>
