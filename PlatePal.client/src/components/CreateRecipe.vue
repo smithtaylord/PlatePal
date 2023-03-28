@@ -57,12 +57,14 @@
 
 <script>
 import { ref } from 'vue';
+import { AppState } from '../AppState.js';
 import { recipesService } from '../services/RecipesService.js';
 import Pop from '../utils/Pop.js';
 
 export default {
     setup() {
         const editable = ref({})
+
         return {
             editable,
             async createRecipe() {

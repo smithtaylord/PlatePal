@@ -21,6 +21,12 @@ class RecipesService {
         logger.log(res.data, '[one recipe]')
         AppState.recipe = new Recipe(res.data)
     }
+
+    async editInstructions(formData) {
+        const res = await api.put('api/recipes/' + formData.recipeId, formData)
+        logger.log(res.data, '[edit instructions]')
+        AppState.recipe = new Recipe(res.data)
+    }
 }
 
 export const recipesService = new RecipesService();
