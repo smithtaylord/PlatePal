@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-12">
         <div class="text-end m-3">
-          <button class="btn btn-success rounded-circle big-btn mdi mdi-plus-circle-outline box-shadow"
+          <button class="btn bg-success selectable rounded-circle big-btn mdi mdi-plus-circle-outline box-shadow"
             data-bs-toggle="modal" data-bs-target="#createRecipe"></button>
         </div>
       </div>

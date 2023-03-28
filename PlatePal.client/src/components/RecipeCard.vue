@@ -1,7 +1,8 @@
 <template>
     <div class="component">
         <!-- ONCLICK OPEN MODAL -->
-        <div class="p-3 mt-4  rounded">
+        <div class="p-3 mt-4  rounded" data-bs-toggle="modal" data-bs-target="#recipeDetails"
+            @click="setRecipeActive(recipe?.id)">
             <div class="position-relative rounded selectable recipe-box-shadow" title="click for recipe details">
                 <img class="recipe-img rounded img-fluid " :src="recipe?.img" :alt="recipe?.title">
                 <div
@@ -26,6 +27,11 @@
 
 
 <script>
+import { recipesService } from '../services/RecipesService.js';
+import { AppState } from '../AppState.js';
+import Pop from '../utils/Pop.js';
+import { ingredientsService } from '../services/IngredientsService.js';
+
 export default {
     props: {
         recipe: {
@@ -34,7 +40,17 @@ export default {
         }
     },
     setup() {
-        return {}
+        return {
+            async setRecipeActive(id) {
+                try {
+                    // AppState.recipe = null
+                    await recipesService.getOneRecipe(id)
+                    await ingredientsService.getIngredients(id)
+                } catch (error) {
+                    Pop.error(error, '[set recipe active]')
+                }
+            }
+        }
     }
 }
 </script>

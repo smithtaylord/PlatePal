@@ -8,6 +8,9 @@
   <Modal id="createRecipe">
     <CreateRecipe />
   </Modal>
+  <Modal id="recipeDetails">
+    <RecipeDetails />
+  </Modal>
 </template>
 
 <script>
