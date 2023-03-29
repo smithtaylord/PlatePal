@@ -6,10 +6,12 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account} */
   account: {},
   /** @type {import('./models/Recipe.js').Recipe} */
-  recipes: {},
+  recipes: [],
   /** @type {import('./models/Recipe.js').Recipe | null} */
   recipe: null,
   /** @type {import('./models/Ingredient.js').Ingredient} */
   ingredients: {},
-  editorOpen: false
+  editorOpen: false,
+  myFavorites: [],
+  myRecipes: {}
 })
