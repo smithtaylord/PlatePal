@@ -4,7 +4,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="recipeDetails">Recipe Details</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        @click="closeEditor"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
@@ -122,6 +123,14 @@ export default {
             openEditor() {
                 try {
                     AppState.editorOpen = true
+                    editable.value = { ...AppState.recipe }
+                } catch (error) {
+                    Pop.error(error, '[open editor]')
+                }
+            },
+            closeEditor() {
+                try {
+                    AppState.editorOpen = false
                 } catch (error) {
                     Pop.error(error, '[open editor]')
                 }
