@@ -79,6 +79,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button class="rounded-pill btn bg-danger selectable box-shadow fs-5 me-3"
+                        @click="deleteRecipe(recipe?.id)" data-bs-dismiss="modal" aria-label="Close">
+                        Delete Recipe <i class="mdi mdi-close-circle-outline"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -145,6 +151,14 @@ export default {
                     AppState.editorOpen = false
                 } catch (error) {
                     Pop.error
+                }
+            },
+            async deleteRecipe(recipeId) {
+                try {
+                    if (await Pop.confirm('Are you sure you want to delete this recipe?'))
+                        await recipesService.deleteRecipe(recipeId)
+                } catch (error) {
+                    Pop.error(error, '[delete recipe]')
                 }
             }
         }

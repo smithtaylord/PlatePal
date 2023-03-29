@@ -34,11 +34,20 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="form-floating mb-3">
-                                    <input required v-model="editable.category" type="text" class="form-control"
-                                        id="cover-image" for="category" placeholder="category" maxlength="1000"
-                                        minlength="2">
+                                <div class="mb-3">
                                     <label for="floatingInput">Category</label>
+                                    <select v-model="editable.category" required class="form-select" id="type">
+                                        <option selected value="Breakfast">Breakfast</option>
+                                        <option value="Lunch">Lunch</option>
+                                        <option value="Noodles">Noodles</option>
+                                        <option value="Soup">Soup</option>
+                                        <option value="Mexican">Mexican</option>
+                                        <option value="Italian">Italian</option>
+                                        <option value="Cheese">Cheese</option>
+                                        <option value="Meat">Meat</option>
+                                        <option value="Specialty Coffee">Specialty Coffee</option>
+                                        <option value="Vegan">Vegan</option>
+                                    </select>
                                 </div>
                             </div>
 
