@@ -2,9 +2,9 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6 m-auto bg-light box-shadow d-flex justify-content-around text-dark p-3 move-up rounded">
-        <div class="fs-3 selectable">Home</div>
-        <div class="fs-3 selectable">My Recipes</div>
-        <div class="fs-3 selectable">Favorites</div>
+        <div class="fs-3 selectable" @click="changeFilter('')">Home</div>
+        <div class="fs-3 selectable" @click="changeFilter('myRecipes')">My Recipes</div>
+        <div class="fs-3 selectable" @click="changeFilter('favorites')">Favorites</div>
 
       </div>
     </div>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, ref } from 'vue';
 import { recipesService } from '../services/RecipesService.js'
 import Pop from '../utils/Pop.js';
 import { AppState } from '../AppState.js';
@@ -37,6 +37,7 @@ import RecipeCard from '../components/RecipeCard.vue';
 
 export default {
   setup() {
+    const filterCategory = ref('')
     async function getAllRecipes() {
       try {
         await recipesService.getALlRecipes();
@@ -49,7 +50,22 @@ export default {
       getAllRecipes();
     });
     return {
-      recipes: computed(() => AppState.recipes)
+      // recipes: computed(() => AppState.recipes),
+      recipes: computed(() => {
+        if (filterCategory.value == '') {
+          return AppState.recipes
+        }
+        if (filterCategory.value == 'myRecipes') {
+          return AppState.recipes.filter(r => r.creatorId == AppState.account.id)
+        }
+        if (filterCategory.value == 'favorites') {
+          return AppState.myFavorites
+        }
+      }),
+
+      changeFilter(type) {
+        filterCategory.value = type
+      }
     };
   },
   components: { RecipeCard }
