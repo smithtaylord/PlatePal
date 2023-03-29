@@ -6,8 +6,8 @@
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username"
               aria-describedby="button-addon2">
-            <button class="btn bg-light" type="button" id="button-addon2"> <i
-                class="mdi mdi-magnify text-success"></i></button>
+            <button class="btn bg-success border-light" type="button" id="button-addon2"> <i
+                class="mdi mdi-magnify text-light"></i></button>
           </div>
         </div>
         <div class="col-3 col-md-1 bg-success text-center">
