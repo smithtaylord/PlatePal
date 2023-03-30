@@ -19,7 +19,7 @@
                             class="mdi mdi-heart-outline glass-bg p-1 heart rounded recipe-box-shadow text-center ms-5 me-3 mt-3 fs-5 selectable"
                             title="add favorite recipe" @click="addFavorite(recipe?.id)"></i>
                         <i v-else
-                            class="mdi mdi-heart glass-bg p-1 heart rounded recipe-box-shadow text-center ms-5 me-3 mt-3 fs-5 selectable"
+                            class="mdi mdi-heart text-danger glass-bg p-1 heart rounded recipe-box-shadow text-center ms-5 me-3 mt-3 fs-5 selectable"
                             title="remove favorite recipe" @click="removeFavorite(recipe?.id)"></i>
                     </div>
                 </div>

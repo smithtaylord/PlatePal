@@ -1,16 +1,16 @@
 <template>
-  <nav class="bg-success p-3 mb-3 pb-5">
+  <nav class="bg-success bg-gradient p-3 mb-3 pb-5">
     <div class="container-fluid">
       <div class="row">
         <div class="col-9 col-md-3 offset-md-8 d-flex align-items-center">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username"
-              aria-describedby="button-addon2">
-            <button class="btn bg-success border-light" type="button" id="button-addon2"> <i
-                class="mdi mdi-magnify text-light"></i></button>
+            <input v-model="editable.search" @input="searchRecipes" type="text" class="form-control"
+              placeholder="Search..." aria-label="search" aria-describedby="button-addon2">
+            <!-- <button class="btn bg-success border-light" type="button" id="button-addon2"> <i
+                class="mdi mdi-magnify text-light"></i></button> -->
           </div>
         </div>
-        <div class="col-3 col-md-1 bg-success text-center">
+        <div class="col-3 col-md-1 text-center">
           <Login />
         </div>
       </div>
@@ -41,10 +41,28 @@
 </template>
 
 <script>
+
+import { ref, computed } from 'vue';
+import { AppState } from '../AppState.js';
 import Login from './Login.vue'
 export default {
   setup() {
-    return {}
+    const editable = ref({ search: '' })
+
+    function searchRecipes() {
+      setTimeout(() => {
+        AppState.recipes = AppState.recipesToBeFiltered.filter(r => r.category.toLowerCase().includes(editable.value.search.toLowerCase()));
+      }, 500);
+      if (editable.value.search == '') {
+        AppState.recipes = AppState.recipesToBeFiltered;
+      }
+    }
+    return {
+      editable,
+      searchRecipes,
+      recipes: computed(() => AppState.recipesToBeFiltered)
+
+    }
   },
   components: { Login }
 }

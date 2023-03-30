@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6 m-auto bg-light box-shadow d-flex justify-content-around text-dark p-3 move-up rounded">
+      <div class="col-md-6 m-auto bg-light box-shadow d-flex justify-content-around text-success p-3 move-up rounded">
         <div class="fs-3 selectable" @click="changeFilter('')">Home</div>
         <div class="fs-3 selectable" @click="changeFilter('myRecipes')">My Recipes</div>
         <div class="fs-3 selectable" @click="changeFilter('favorites')">Favorites</div>

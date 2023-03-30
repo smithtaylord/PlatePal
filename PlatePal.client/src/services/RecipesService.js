@@ -8,6 +8,7 @@ class RecipesService {
         const res = await api.get('api/recipes')
         logger.log(res.data, '[all recipes]')
         AppState.recipes = res.data.map(r => new Recipe(r))
+        AppState.recipesToBeFiltered = res.data.map(r => new Recipe(r))
     }
 
     async createRecipe(formData) {
