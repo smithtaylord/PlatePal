@@ -2,8 +2,8 @@
     <div class="component">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="recipeDetails">Recipe Details</h1>
+                <div class="modal-header bg-success text-center">
+                    <h1 class="bg-success text-center" id="recipeDetails">Recipe Details</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         @click="closeEditor"></button>
                 </div>
@@ -14,7 +14,7 @@
                                 <img class="img-fluid" :src="recipe?.img" :alt="recipe?.title">
                             </div>
                             <div class="col-8 ">
-                                <h2>{{ recipe?.title }}</h2>
+                                <h2 class="text-center">{{ recipe?.title }}</h2>
                                 <div class="row">
                                     <div class="col-6 p-3">
                                         <div class="bg-success text-light w-100">

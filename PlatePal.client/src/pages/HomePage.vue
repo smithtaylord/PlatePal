@@ -21,7 +21,7 @@
       <div class="col-12">
         <div class="text-end m-3">
           <button class="btn bg-success selectable rounded-circle big-btn mdi mdi-plus-circle-outline box-shadow"
-            data-bs-toggle="modal" data-bs-target="#createRecipe"></button>
+            data-bs-toggle="modal" data-bs-target="#createRecipe" title="create recipe"></button>
         </div>
       </div>
     </div>
