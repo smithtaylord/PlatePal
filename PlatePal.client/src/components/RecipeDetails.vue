@@ -40,6 +40,10 @@
                                                 <h3 class="text-center"> Ingredients </h3>
                                             </div>
                                             <div v-for="i in ingredient" class="col-12 d-flex mb-4 ">
+                                                <div v-if="recipe?.creatorId == account.id" class="text-end"> <i
+                                                        class="mdi mdi-close-circle-outline selectable"
+                                                        title="remove ingredient" @click="removeIngredient(i.id)"></i>
+                                                </div>
                                                 <div>{{ i?.quantity }} - </div>
                                                 <div> {{ i?.name }}</div>
                                             </div>
@@ -53,7 +57,7 @@
                                                             <div class="form-floating mb-3 h-75">
                                                                 <input required v-model="editable.quantity" type="text"
                                                                     class="form-control" id="cover-image" for="ingredient"
-                                                                    placeholder="" maxlength="1000" minlength="2">
+                                                                    placeholder="" maxlength="1000" minlength="1">
                                                                 <label for="floatingInput">Quantity</label>
                                                             </div>
                                                         </div>
@@ -79,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div v-if="recipe?.creatorId == account.id" class="modal-footer">
                     <button class="rounded-pill btn bg-danger selectable box-shadow fs-5 me-3"
                         @click="deleteRecipe(recipe?.id)" data-bs-dismiss="modal" aria-label="Close">
                         Delete Recipe <i class="mdi mdi-close-circle-outline"></i>
@@ -96,6 +100,7 @@ import { computed, ref, watchEffect } from 'vue';
 import { AppState } from '../AppState.js';
 import { ingredientsService } from '../services/IngredientsService.js';
 import { recipesService } from '../services/RecipesService.js';
+import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 
 export default {
@@ -159,6 +164,14 @@ export default {
                         await recipesService.deleteRecipe(recipeId)
                 } catch (error) {
                     Pop.error(error, '[delete recipe]')
+                }
+            },
+            async removeIngredient(ingredientId) {
+                try {
+                    if (await Pop.confirm('Are you sure you would like to remove this ingredient?'))
+                        await ingredientsService.removeIngredient(ingredientId)
+                } catch (error) {
+                    Pop.error(error, '[remove ingredient]')
                 }
             }
         }
